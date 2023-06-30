@@ -1,5 +1,61 @@
 import VideoThumb from '@/public/images/hero-image-01.jpg'
 import ModalVideo from '@/components/modal-video'
+import Bubble from "@/components/vectors/bubble";
+"use client"
+import React, { useEffect, useState, useRef } from 'react';
+import {chatMessages} from "@/chats";
+import $ from "jquery"
+import "../app/css/chat.css"
+
+
+const ChatContainer = () => {
+
+  let chatDelay = 0;
+
+  function onRowAdded() {
+    $('.chat-container').animate({
+      scrollTop: $('.chat-container').prop('scrollHeight')
+    });
+  };
+
+
+  $.each(chatMessages, function(index, obj) {
+    chatDelay = chatDelay + 4000;
+    let chatDelay2 = chatDelay + obj.delay;
+    let chatDelay3 = chatDelay2 + 10;
+    let scrollDelay = chatDelay;
+    let chatTimeString = " ";
+    let msgname = "." + obj.name;
+    let msginner = ".messageinner-" + obj.name;
+    let spinner = ".sp-" + obj.name;
+    if (obj.showTime == true) {
+      chatTimeString = "<span class='message-time'>" + obj.time + "</span>";
+    }
+    $(".chat-message-list").append("<li class='message-" + obj.align + " " + obj.name + "' hidden><div class='sp-" + obj.name + "'><span class='spinme-" + obj.align + "'><div class='spinner'><div class='bounce1'></div><div class='bounce2'></div><div class='bounce3'></div></div></span></div><div class='messageinner-" + obj.name + "' hidden><span class='message-text'>" + obj.msg + "</span>" + chatTimeString + "</div></li>");
+    $(msgname).delay(chatDelay).fadeIn();
+    $(spinner).delay(chatDelay2).hide(1);
+    $(msginner).delay(chatDelay3).fadeIn();
+    setTimeout(onRowAdded, chatDelay);
+    setTimeout(onRowAdded, chatDelay3);
+    chatDelay = chatDelay3;
+  });
+
+  return (
+      <div id="wrapper">
+        <div className="chat">
+          <div className="chat-container">
+            <div className="chat-listcontainer">
+
+              <ul className="chat-message-list">
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+  );
+};
+
 
 export default function Hero() {
   return (
@@ -19,31 +75,32 @@ export default function Hero() {
           </svg>
         </div>
 
+
+
+
         {/* Hero content */}
-        <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
+        <div className="relative flex pt-32 pb-10 md:pt-40 md:pb-16">
+
+
 
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h1 mb-4" data-aos="fade-up">Landing template for startups</h1>
-            <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.</p>
+          <div className="max-w-3xl relative mx-auto text-center pb-12 md:pb-16">
+
+            <h1 className="h1 mb-4" data-aos="fade-up">Concierge-Ai</h1>
+            <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">Personal. 24/7. Truly magical.</p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="#0">Start free trial</a>
+                <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="#0">Discover more</a>
               </div>
-              <div data-aos="fade-up" data-aos-delay="600">
-                <a className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="#0">Learn more</a>
-              </div>
+
             </div>
+            {/* chat animation */}
+
+            <ChatContainer></ChatContainer>
+
           </div>
 
-          <ModalVideo
-            thumb={VideoThumb}
-            thumbWidth={1024}
-            thumbHeight={576}
-            thumbAlt="Modal video thumbnail"
-            video="/videos/video.mp4"
-            videoWidth={1920}
-            videoHeight={1080} />
+          <img src={"/images/iPhone.png"}/>
 
         </div>
 
