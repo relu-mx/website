@@ -19,26 +19,7 @@ const ChatContainer = () => {
   };
 
 
-  $.each(chatMessages, function(index, obj) {
-    chatDelay = chatDelay + 4000;
-    let chatDelay2 = chatDelay + obj.delay;
-    let chatDelay3 = chatDelay2 + 10;
-    let scrollDelay = chatDelay;
-    let chatTimeString = " ";
-    let msgname = "." + obj.name;
-    let msginner = ".messageinner-" + obj.name;
-    let spinner = ".sp-" + obj.name;
-    if (obj.showTime == true) {
-      chatTimeString = "<span class='message-time'>" + obj.time + "</span>";
-    }
-    $(".chat-message-list").append("<li class='message-" + obj.align + " " + obj.name + "' hidden><div class='sp-" + obj.name + "'><span class='spinme-" + obj.align + "'><div class='spinner'><div class='bounce1'></div><div class='bounce2'></div><div class='bounce3'></div></div></span></div><div class='messageinner-" + obj.name + "' hidden><span class='message-text'>" + obj.msg + "</span>" + chatTimeString + "</div></li>");
-    $(msgname).delay(chatDelay).fadeIn();
-    $(spinner).delay(chatDelay2).hide(1);
-    $(msginner).delay(chatDelay3).fadeIn();
-    setTimeout(onRowAdded, chatDelay);
-    setTimeout(onRowAdded, chatDelay3);
-    chatDelay = chatDelay3;
-  });
+
 
   return (
       <div id="wrapper">
