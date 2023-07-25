@@ -1,10 +1,6 @@
-import VideoThumb from '@/public/images/hero-image-01.jpg'
-import ModalVideo from '@/components/modal-video'
-import Bubble from "@/components/vectors/bubble";
+
 "use client"
-import React, { useEffect, useState, useRef } from 'react';
-import {chatMessages} from "@/chats";
-import $ from "jquery"
+
 import "../app/css/chat.css"
 
 
@@ -75,13 +71,9 @@ export default function Hero() {
               </div>
 
             </div>
-            {/* chat animation */}
-
-            <ChatContainer></ChatContainer>
 
           </div>
 
-          <img src={"/images/iPhone.png"}/>
 
         </div>
 
