@@ -4,7 +4,7 @@ import FeatImage02 from "@/public/images/vision.jpg";
 import FeatImage03 from "@/public/images/team.jpg";
 
 export const metadata = {
-    title: 'About - Relu',
+    title: 'About',
     description: 'About page of Relu - Who we are | Our vision | our team',
 }
 

@@ -19,7 +19,10 @@ const architects_daughter = Architects_Daughter({
 })
 
 export const metadata = {
-  title: 'Relu',
+  title: {
+    default: "Relu",
+    template: '%s | Relu'
+  },
   description: 'Page in relu',
 }
 
